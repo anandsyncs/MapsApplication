@@ -1,0 +1,22 @@
+GUI provided by UCSD MOOC Team.
+I am developing the backend of this Application Independent of UCSD Track.
+
+
+
+This app can be used as teaching tool to explain workings of algorithms like :
+1 Dijkstra
+2 BFS
+3 A*
+4 Varoius TSP Implementations and and right way of using them.
+
+Stage: 1
+Impementation of Graphs - Done.
+
+Stage: 2
+Implementation of Route Planning Algorithms.
+
+Stage: 3
+Implementation of TSP DP Algorithm.
+
+Stage: 4
+Implementation of various TSP Heuristics.
