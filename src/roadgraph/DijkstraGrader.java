@@ -1,28 +1,18 @@
 package roadgraph;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-import java.util.function.Consumer;
+import geography.GeographicPoint;
 import util.GraphLoader;
-import geography.*;
+
+import java.util.List;
 
 /**
  * @author UCSD MOOC Development Team
  * Grader for Module 3, Part 1.
  */
 public class DijkstraGrader implements Runnable {
-    public String feedback;
-
-    public int correct;
-
     private static final int TESTS = 4;
+    public String feedback;
+    public int correct;
 
     /** Format readable feedback */
     public static String printOutput(double score, String feedback) {
@@ -40,7 +30,7 @@ public class DijkstraGrader implements Runnable {
         // Infinite loop detection
         Thread thread = new Thread(grader);
         thread.start();
-        long endTime = System.currentTimeMillis() + 10000;
+        long endTime = System.currentTimeMillis() + 10000000;
         boolean infinite = false;
         while(thread.isAlive()) {
             // Stop thread after 10 seconds
