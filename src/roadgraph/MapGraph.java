@@ -22,13 +22,12 @@ import util.GraphLoader;
  *
  */
 public class MapGraph {
-	//TODO: Add your member variables here in WEEK 2
+	//Member Variables
 	private int numVertices;
 	private int numEdges;
 	private List<MapNode> vertices;
 	private HashMap<GeographicPoint,MapNode> nodes;
-//	List<MapEdge> edges=new ArrayList<>();
-	
+
 	/** 
 	 * Create a new empty MapGraph 
 	 */
@@ -106,19 +105,30 @@ public class MapGraph {
 	 */
 	public void addEdge(GeographicPoint from, GeographicPoint to, String roadName,
 			String roadType, Double length) throws IllegalArgumentException {
-		if(from==null || to==null || roadName==null || roadType==null || length==null){
-
-		}
-		if(length<0 || !nodes.containsKey(from) || !nodes.containsKey(to)){
+		if(!checkNullEdge(from,to,roadName,roadType,length)){
 			throw new IllegalArgumentException();
 		}
 
+		//Stores edge in a MapEdge object.
 		MapEdge edge=new MapEdge(from,to,roadName,roadType,length);
 		MapNode start=nodes.get(from);
 		start.addEdge(edge);
 		numEdges++;
 	}
-	
+
+	/*
+	*This function checks for null values in Input parameters.
+	 */
+	private boolean checkNullEdge(GeographicPoint from, GeographicPoint to, String roadName,
+							   String roadType, Double length){
+		if(from==null || to==null || roadName==null || roadType==null || length==null){
+			return false;
+		}
+		if(length<0 || !nodes.containsKey(from) || !nodes.containsKey(to)){
+			return false;
+		}
+		return true;
+	}
 
 	/** Find the path from start to goal using breadth first search
 	 * 
