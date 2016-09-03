@@ -15,6 +15,7 @@ public class MapNode {
     private GeographicPoint point;
     //Keeps track of node's visited status.
     private boolean visited;
+
     //Constructor to initialize member variables.
     public MapNode(GeographicPoint geographicPoint){
         edges=new ArrayList<>();
