@@ -1,22 +1,24 @@
-GUI provided by UCSD MOOC Team.
-I am developing the backend of this Application Independent of UCSD Track.
+I am developing the backend of this Google Maps like application.
 
+Thanks to UCSD team for providing the frontend.
 
+This app uses JAVA, Google Maps API and various route planning algorithms.
 
-This app can be used as teaching tool to explain workings of algorithms like :
+This app can be used as teaching tool to explain working of algorithms like :
 1 Dijkstra
 2 BFS
 3 A*
-4 Varoius TSP Implementations and and right way of using them.
+
 
 Stage: 1
 Impementation of Graphs - Done.
 
 Stage: 2
-Implementation of Route Planning Algorithms.
+Implementation of BFS. - Done.
 
 Stage: 3
-Implementation of TSP DP Algorithm.
+Implementation of Dijkstra and A* - Done.
 
-Stage: 4
-Implementation of various TSP Heuristics.
+Packages contributed by me:
+1) Basic Graph.
+2) Road Graph.

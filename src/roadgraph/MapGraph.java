@@ -357,7 +357,7 @@ public class MapGraph {
 					continue;
 				}
 
-				queue.add(new DijkstraNode(nodes.get(e.getTo()), current.distance + e.getLength(), current.location));
+				queue.add(new DijkstraNode(nodes.get(e.getTo()), e.getTo().distance(goal) + e.getLength(), current.location));
 
 //				count++;
 			}
