@@ -1,23 +1,18 @@
-I am developing the backend of this Google Maps like application.
+This is a Google Maps like application made with JavaFX.
 
-Thanks to UCSD team for providing the frontend.
+Features:
+1) Shortest path between two points.
+2) Show route visualisations for path finding using BFS, Dijkstra, A* Search.
 
-This app uses JAVA, Google Maps API and various route planning algorithms.
+This application can be used to teach how different route planning algorithms work besides the power of A* search .
 
-This app can be used as teaching tool to explain working of algorithms like :
-1 Dijkstra
-2 BFS
-3 A*
+It uses:
+1) Java FX for front end.
+2) BFS, Dijkstra and A* algorithms for path finding.
+3) Google Maps API for rendering map.
 
-
-Stage: 1
-Impementation of Graphs - Done.
-
-Stage: 2
-Implementation of BFS. - Done.
-
-Stage: 3
-Implementation of Dijkstra and A* - Done.
+I have coded the backend(Maps and Algorithms) for this application.
+Thanks to UCSD team for providing Java FX front end.
 
 Packages contributed by me:
 1) Basic Graph.
