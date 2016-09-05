@@ -1,42 +1,11 @@
 /** JavaFX application which interacts with the Google
  * Maps API to provide a mapping interface with which
  * to test and develop graph algorithms and data structures
- * 
- * @author UCSD MOOC development team
+ *
+ * @author UCSD  team
  *
  */
 package application;
-
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.web.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 
 import application.controllers.FetchController;
 import application.controllers.RouteController;
@@ -48,21 +17,66 @@ import gmapsfx.javascript.object.GoogleMap;
 import gmapsfx.javascript.object.LatLong;
 import gmapsfx.javascript.object.MapOptions;
 import gmapsfx.javascript.object.MapTypeIdEnum;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MapApp extends Application
 implements MapComponentInitializedListener {
 
+	// CONSTANTS
+	private static final double MARGIN_VAL = 10;
+	private static final double FETCH_COMPONENT_WIDTH = 160.0;
 	protected GoogleMapView mapComponent;
 	protected GoogleMap map;
 	protected BorderPane bp;
 	protected Stage primaryStage;
 
-	// CONSTANTS
-	private static final double MARGIN_VAL = 10;
-	private static final double FETCH_COMPONENT_WIDTH = 160.0;
-
 	public static void main(String[] args){
 		launch(args);
+	}
+
+	public static void showInfoAlert(String header, String content) {
+		Alert alert = getInfoAlert(header, content);
+		alert.showAndWait();
+	}
+
+	public static Alert getInfoAlert(String header, String content) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information");
+		alert.setHeaderText(header);
+		alert.setContentText(content);
+		return alert;
+	}
+
+
+	// SETTING UP THE VIEW
+
+	public static void showErrorAlert(String header, String content) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("File Name Error");
+		alert.setHeaderText(header);
+		alert.setContentText(content);
+		alert.showAndWait();
 	}
 
 	/**
@@ -164,7 +178,6 @@ implements MapComponentInitializedListener {
 
 	}
 
-
 	@Override
 	public void mapInitialized() {
 
@@ -194,9 +207,6 @@ implements MapComponentInitializedListener {
 
 	}
 
-
-	// SETTING UP THE VIEW
-
 	private HBox getBottomBox(TextField tf, Button fetchButton) {
 		HBox box = new HBox();
 		tf.setPrefWidth(FETCH_COMPONENT_WIDTH);
@@ -205,6 +215,7 @@ implements MapComponentInitializedListener {
 		box.getChildren().add(fetchButton);
 		return box;
 	}
+
 	/**
 	 * Setup layout and controls for Fetch tab
 	 * @param fetchTab
@@ -234,7 +245,12 @@ implements MapComponentInitializedListener {
 		return v;
 	}
 
-	/**	
+
+	/*
+	 * METHODS FOR SHOWING DIALOGS/ALERTS
+	 */
+
+	/**
 	 * Setup layout of route tab and controls
 	 *
 	 * @param routeTab
@@ -343,11 +359,6 @@ implements MapComponentInitializedListener {
 		return new LinkedList<RadioButton>(Arrays.asList(rbB, rbD, rbA));
 	}
 
-
-	/*
-	 * METHODS FOR SHOWING DIALOGS/ALERTS
-	 */
-
 	public void showLoadStage(Stage loadStage, String text) {
 		loadStage.initModality(Modality.APPLICATION_MODAL);
 		loadStage.initOwner(primaryStage);
@@ -361,27 +372,6 @@ implements MapComponentInitializedListener {
 		Scene loadScene = new Scene(loadVBox, 300, 200);
 		loadStage.setScene(loadScene);
 		loadStage.show();
-	}
-
-	public static void showInfoAlert(String header, String content) {
-		Alert alert = getInfoAlert(header, content);
-		alert.showAndWait();
-	}
-
-	public static Alert getInfoAlert(String header, String content) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Information");
-		alert.setHeaderText(header);
-		alert.setContentText(content);
-		return alert;
-	}
-
-	public static void showErrorAlert(String header, String content) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("File Name Error");
-		alert.setHeaderText(header);
-		alert.setContentText(content);
-		alert.showAndWait();
 	}
 
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /** A class that implements a directed graph. 
  * The graph may have self-loops, parallel edges. 
@@ -12,8 +11,8 @@ import java.util.Set;
  * and may also have String labels.
  * The edges of the graph are not labeled.
  * Representation of edges via adjacency lists.
- * 
- * @author UCSD MOOC development team and YOU
+ *
+ * @author anand
  *
  */
 public class GraphAdjList extends Graph {
