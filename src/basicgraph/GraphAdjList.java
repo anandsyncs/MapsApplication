@@ -24,6 +24,7 @@ public class GraphAdjList extends Graph {
 	 * Create a new empty Graph
 	 */
 	public GraphAdjList () {
+
 		adjListsMap = new HashMap<Integer,ArrayList<Integer>>();
 	}
 

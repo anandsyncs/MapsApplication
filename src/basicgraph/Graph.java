@@ -161,15 +161,7 @@ public abstract class Graph {
 			degreeSeq.add((in+out));
 
 		}
-		Collections.sort(degreeSeq,new Comparator<Integer>() {
-
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				// TODO Auto-generated method stub
-				return o2.compareTo(o1);
-			}
-
-		});
+		Collections.sort(degreeSeq, (o1, o2) -> o2.compareTo(o1));
 
 		return degreeSeq;
 	}
