@@ -274,8 +274,8 @@ public class MapGraph {
 		int count = 0;
 		LinkedList<GeographicPoint> shortestPath = new LinkedList<>();
 		HashMap<MapNode, MapNode> previous = new HashMap<>();
-		PriorityQueue<DijkstraNode> queue = new PriorityQueue<>();
-		DijkstraNode current = new DijkstraNode(nodes.get(start), 0);
+		PriorityQueue<CompareNode> queue = new PriorityQueue<>();
+		CompareNode current = new CompareNode(nodes.get(start), 0);
 		queue.add(current);
 
 		while (!queue.isEmpty() && current.location != nodes.get(goal)) {
@@ -290,7 +290,7 @@ public class MapGraph {
 					continue;
 				}
 
-				queue.add(new DijkstraNode(nodes.get(e.getTo()), current.distance + e.getLength(), current.location));
+				queue.add(new CompareNode(nodes.get(e.getTo()), current.distance + e.getLength(), current.location));
 				count++;
 			}
 		}
@@ -338,8 +338,8 @@ public class MapGraph {
 //		HashMap<GeographicPoint> store=new HashSet<>();
 		LinkedList<GeographicPoint> shortestPath = new LinkedList<>();
 		HashMap<MapNode, MapNode> previous = new HashMap<>();
-		PriorityQueue<DijkstraNode> queue = new PriorityQueue<>();
-		DijkstraNode current = new DijkstraNode(nodes.get(start), 0);
+		PriorityQueue<CompareNode> queue = new PriorityQueue<>();
+		CompareNode current = new CompareNode(nodes.get(start), 0);
 		queue.add(current);
 
 		while (!queue.isEmpty() && current.location != nodes.get(goal)) {
@@ -357,7 +357,7 @@ public class MapGraph {
 					continue;
 				}
 
-				queue.add(new DijkstraNode(nodes.get(e.getTo()), e.getTo().distance(goal) + e.getLength(), current.location));
+				queue.add(new CompareNode(nodes.get(e.getTo()), e.getTo().distance(goal) + e.getLength(), current.location));
 
 //				count++;
 			}
@@ -381,17 +381,17 @@ public class MapGraph {
 		
 	}
 
-	private class DijkstraNode implements Comparable<DijkstraNode> {
+	private class CompareNode implements Comparable<CompareNode> {
 		public MapNode location;
 		public double distance;
 		public MapNode previous;
 
-		public DijkstraNode(MapNode location, double distance) {
+		public CompareNode(MapNode location, double distance) {
 			this.location = location;
 			this.distance = distance;
 		}
 
-		public DijkstraNode(MapNode location, double distance, MapNode previous) {
+		public CompareNode(MapNode location, double distance, MapNode previous) {
 			this.location = location;
 			this.distance = distance;
 			this.previous = previous;
@@ -399,7 +399,7 @@ public class MapGraph {
 
 
 		@Override
-		public int compareTo(DijkstraNode o) {
+		public int compareTo(CompareNode o) {
 			return Double.compare(this.distance, o.distance);
 		}
 	}
