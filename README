@@ -12,8 +12,11 @@ It uses:
 3) Google Maps API for rendering map.
 
 I have coded the backend(Maps and Algorithms) for this application.
-Thanks to UCSD team for providing Java FX front end.
+
+Next Extension : Different TSP Algorithms Comparision.
 
 Packages contributed by me:
 1) Basic Graph.
 2) Road Graph.
+
+Thanks to UCSD team for providing Java FX front end.
